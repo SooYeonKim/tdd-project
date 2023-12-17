@@ -1,7 +1,7 @@
 package com.example.tdd.user;
 
 import com.example.tdd.balance.Balance;
-import com.example.tdd.like.Like;
+import com.example.tdd.Heart.Heart;
 import com.example.tdd.order.Orders;
 import com.example.tdd.payment.Payment;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -45,7 +45,7 @@ public class Users {
     @OneToMany(
             mappedBy = "users"
     )
-    List<Like> likeList = new ArrayList<>();
+    List<Heart> heartList = new ArrayList<>();
     @OneToMany(
             mappedBy = "users"
     )
