@@ -1,6 +1,6 @@
 package com.example.tdd.product;
 
-import com.example.tdd.like.Like;
+import com.example.tdd.Heart.Heart;
 import com.example.tdd.order.OrderDetail;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -35,7 +35,7 @@ public class Product {
     @OneToMany(
             mappedBy = "product"
     )
-    List<Like> likeList = new ArrayList<>();
+    List<Heart> heartList = new ArrayList<>();
     @OneToMany(
             mappedBy = "product"
     )

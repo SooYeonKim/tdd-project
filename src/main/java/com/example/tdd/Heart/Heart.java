@@ -1,4 +1,4 @@
-package com.example.tdd.like;
+package com.example.tdd.Heart;
 
 import com.example.tdd.product.Product;
 import com.example.tdd.user.Users;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class Like {
+public class Heart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class Like {
     private Product product;
 
     @Builder
-    public Like(Users users, Product product) {
+    public Heart(Users users, Product product) {
         this.users = users;
         this.product = product;
     }
