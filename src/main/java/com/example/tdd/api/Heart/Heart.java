@@ -1,14 +1,16 @@
-package com.example.tdd.Heart;
+package com.example.tdd.api.Heart;
 
-import com.example.tdd.product.Product;
-import com.example.tdd.user.Users;
+import com.example.tdd.api.product.Product;
+import com.example.tdd.api.user.Users;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Heart {

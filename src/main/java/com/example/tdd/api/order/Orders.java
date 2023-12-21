@@ -1,18 +1,20 @@
-package com.example.tdd.order;
+package com.example.tdd.api.order;
 
-import com.example.tdd.orderProduct.OrderProduct;
-import com.example.tdd.payment.Payment;
-import com.example.tdd.user.Users;
+import com.example.tdd.api.orderProduct.OrderProduct;
+import com.example.tdd.api.payment.Payment;
+import com.example.tdd.api.user.Users;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Orders {

@@ -1,14 +1,16 @@
-package com.example.tdd.payment;
+package com.example.tdd.api.payment;
 
-import com.example.tdd.order.Orders;
-import com.example.tdd.user.Users;
+import com.example.tdd.api.order.Orders;
+import com.example.tdd.api.user.Users;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Payment {
@@ -23,7 +25,7 @@ public class Payment {
     @ManyToOne(targetEntity = Orders.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "order_idx")
     private Orders orders;
-    private int price;
+    private Integer price;
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
     @Enumerated(EnumType.STRING)
@@ -38,7 +40,7 @@ public class Payment {
     }
 
     @Builder
-    public Payment(String paymentNumber, Users users, Orders orders, int price, PaymentMethod paymentMethod, PaymentState paymentState) {
+    public Payment(String paymentNumber, Users users, Orders orders, Integer price, PaymentMethod paymentMethod, PaymentState paymentState) {
         this.paymentNumber = paymentNumber;
         this.users = users;
         this.orders = orders;

@@ -1,9 +1,9 @@
-package com.example.tdd.user;
+package com.example.tdd.api.user;
 
-import com.example.tdd.balance.Balance;
-import com.example.tdd.Heart.Heart;
-import com.example.tdd.order.Orders;
-import com.example.tdd.payment.Payment;
+import com.example.tdd.api.Heart.Heart;
+import com.example.tdd.api.order.Orders;
+import com.example.tdd.api.payment.Payment;
+import com.example.tdd.api.balance.Balance;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -13,12 +13,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Users {
@@ -31,7 +33,7 @@ public class Users {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private String nickname;
-    private int balance;
+    private Integer balance;
     @CreatedDate
     private LocalDateTime createdAt;
     @LastModifiedDate
@@ -56,7 +58,7 @@ public class Users {
     List<Payment> paymentList = new ArrayList<>();
 
     @Builder
-    public Users(String email, String password, String nickname, int balance, LocalDateTime createdAt, LocalDateTime updatedAt, Character deletedYn) {
+    public Users(String email, String password, String nickname, Integer balance, LocalDateTime createdAt, LocalDateTime updatedAt, Character deletedYn) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
@@ -68,5 +70,9 @@ public class Users {
 
     public void deleteUser() {
         this.deletedYn = 'Y';
+    }
+
+    public void updateBalance(Integer amount) {
+        this.balance += amount;
     }
 }
