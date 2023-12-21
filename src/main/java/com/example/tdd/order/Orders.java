@@ -1,5 +1,6 @@
 package com.example.tdd.order;
 
+import com.example.tdd.orderProduct.OrderProduct;
 import com.example.tdd.payment.Payment;
 import com.example.tdd.user.Users;
 import jakarta.persistence.*;
@@ -33,7 +34,7 @@ public class Orders {
     @OneToMany(
             mappedBy = "orders"
     )
-    List<OrderDetail> orderDetailList = new ArrayList<>();
+    List<OrderProduct> orderProductList = new ArrayList<>();
 
     public enum OrderState {
         PROGRESS, COMPLETE, SHIPPING, DELIVERY_COMPLETE, CANCEL
