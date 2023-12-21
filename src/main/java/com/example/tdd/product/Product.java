@@ -1,7 +1,7 @@
 package com.example.tdd.product;
 
 import com.example.tdd.Heart.Heart;
-import com.example.tdd.order.OrderDetail;
+import com.example.tdd.orderProduct.OrderProduct;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -39,7 +39,7 @@ public class Product {
     @OneToMany(
             mappedBy = "product"
     )
-    List<OrderDetail> orderDetailList = new ArrayList<>();
+    List<OrderProduct> orderProductList = new ArrayList<>();
 
     @Builder
     public Product(String productName, int stock, int price, String description, LocalDateTime createdAt, LocalDateTime updatedAt, Character deletedYn) {

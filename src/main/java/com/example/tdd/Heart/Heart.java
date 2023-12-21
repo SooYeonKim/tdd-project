@@ -15,7 +15,7 @@ public class Heart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long likeIdx;
+    private Long heartIdx;
     @ManyToOne(targetEntity = Users.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_idx")
     private Users users;
