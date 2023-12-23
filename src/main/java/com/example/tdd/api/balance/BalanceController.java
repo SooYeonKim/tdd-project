@@ -1,6 +1,6 @@
 package com.example.tdd.api.balance;
 
-import com.example.tdd.api.balance.dto.AmountChargeRequestDto;
+import com.example.tdd.api.balance.dto.AmountChargeRequest;
 import com.example.tdd.global.response.BaseDataResponse;
 import com.example.tdd.global.response.BaseResponse;
 import jakarta.validation.Valid;
@@ -19,8 +19,14 @@ public class BalanceController {
     @PostMapping("")
     public ResponseEntity<BaseResponse> charge (
             @RequestParam(name = "userId") Long userId,
-            @Valid @RequestBody AmountChargeRequestDto amountChargeRequestDto) {
-        balanceService.charge(userId, amountChargeRequestDto);
-        return ResponseEntity.status(HttpStatus.OK).body(new BaseResponse("잔액 충전이 완료되었습니다."));
+            @Valid @RequestBody AmountChargeRequest amountChargeRequest) {
+        balanceService.charge(userId, amountChargeRequest);
+        return ResponseEntity.status(HttpStatus.OK).body(BaseResponse.of("I1000", "잔액 충전이 완료되었습니다."));
+    }
+
+    @GetMapping("")
+    public ResponseEntity<BaseDataResponse> getUserBalance (
+            @RequestParam(name = "userId") Long userId) {
+        return ResponseEntity.status(HttpStatus.OK).body(BaseDataResponse.of("I1001", "잔액 조회가 완료되었습니다.", balanceService.getUserBalance(userId)));
     }
 }

@@ -12,6 +12,6 @@ public class ExceptionController {
 
     @ExceptionHandler(NotUserFoundException.class)
     public ResponseEntity<BaseResponse> NotExistUserExceptionHandler(NotUserFoundException e){
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new BaseResponse(e.getMessage()));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new BaseResponse("E1000", e.getMessage()));
     }
 }

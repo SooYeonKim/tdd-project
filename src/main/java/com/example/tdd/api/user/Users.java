@@ -72,7 +72,7 @@ public class Users {
         this.deletedYn = 'Y';
     }
 
-    public void updateBalance(Long amount) {
+    public void chargeBalance(Long amount) {
         this.balance += amount;
     }
 }

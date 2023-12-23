@@ -1,7 +1,9 @@
 package com.example.tdd.api.balance;
 
+import com.example.tdd.api.balance.dto.UserBalanceResponseDto;
+import com.example.tdd.api.user.UserComponent;
 import com.example.tdd.api.user.UserRepository;
-import com.example.tdd.api.balance.dto.AmountChargeRequestDto;
+import com.example.tdd.api.balance.dto.AmountChargeRequest;
 import com.example.tdd.api.user.Users;
 import com.example.tdd.global.exception.NotUserFoundException;
 import lombok.RequiredArgsConstructor;
@@ -13,20 +15,25 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class BalanceServiceImpl implements BalanceService {
 
-    private final UserRepository userRepository;
+    private final UserComponent userComponent;
     private final BalanceRepository balanceRepository;
 
     @Override
-    public void charge(Long userId, AmountChargeRequestDto amountChargeRequestDto) {
-        Users users = userRepository.findByUserId(userId).orElseThrow(() -> new NotUserFoundException("존재하지 않는 회원입니다."));
-        users.updateBalance(amountChargeRequestDto.getAmount());
+    public void charge(Long userId, AmountChargeRequest amountChargeRequest) {
+        Users users = userComponent.getUser(userId);
+        users.chargeBalance(amountChargeRequest.getAmount());
 
         Balance balance = Balance.builder()
                 .users(users)
-                .amount(amountChargeRequestDto.getAmount())
-                .content(amountChargeRequestDto.getContent())
+                .amount(amountChargeRequest.getAmount())
+                .content(amountChargeRequest.getContent())
                 .build();
-
         balanceRepository.save(balance);
+    }
+
+    @Override
+    public UserBalanceResponseDto getUserBalance(Long userId) {
+        Users users = userComponent.getUser(userId);
+        return UserBalanceResponseDto.of(users);
     }
 }
