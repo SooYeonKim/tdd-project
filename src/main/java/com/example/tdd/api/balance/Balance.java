@@ -19,17 +19,17 @@ public class Balance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long balanceIdx;
+    private Long balanceId;
     @ManyToOne(targetEntity = Users.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_idx")
+    @JoinColumn(name = "user_id")
     private Users users;
-    private Integer amount;
+    private Long amount;
     private String content;
     @CreatedDate
     private LocalDateTime createdAt;
 
     @Builder
-    public Balance(Users users, Integer amount, String content, LocalDateTime createdAt) {
+    public Balance(Users users, Long amount, String content, LocalDateTime createdAt) {
         this.users = users;
         this.amount = amount;
         this.content = content;

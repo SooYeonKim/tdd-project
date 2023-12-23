@@ -27,13 +27,13 @@ public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userIdx;
+    private Long userId;
     private String email;
     @JsonIgnore
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private String nickname;
-    private Integer balance;
+    private Long balance;
     @CreatedDate
     private LocalDateTime createdAt;
     @LastModifiedDate
@@ -58,7 +58,7 @@ public class Users {
     List<Payment> paymentList = new ArrayList<>();
 
     @Builder
-    public Users(String email, String password, String nickname, Integer balance, LocalDateTime createdAt, LocalDateTime updatedAt, Character deletedYn) {
+    public Users(String email, String password, String nickname, Long balance, LocalDateTime createdAt, LocalDateTime updatedAt, Character deletedYn) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;

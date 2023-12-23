@@ -23,10 +23,10 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productIdx;
+    private Long productId;
     private String productName;
-    private Integer stock;
-    private Integer price;
+    private Long stock;
+    private Long price;
     private String description;
     @CreatedDate
     private LocalDateTime createdAt;
@@ -44,7 +44,7 @@ public class Product {
     List<OrderProduct> orderProductList = new ArrayList<>();
 
     @Builder
-    public Product(String productName, Integer stock, Integer price, String description, LocalDateTime createdAt, LocalDateTime updatedAt, Character deletedYn) {
+    public Product(String productName, Long stock, Long price, String description, LocalDateTime createdAt, LocalDateTime updatedAt, Character deletedYn) {
         this.productName = productName;
         this.stock = stock;
         this.price = price;

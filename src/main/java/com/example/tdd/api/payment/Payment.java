@@ -17,15 +17,15 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long paymentIdx;
+    private Long paymentId;
     private String paymentNumber;
     @ManyToOne(targetEntity = Users.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_idx")
+    @JoinColumn(name = "user_id")
     private Users users;
     @ManyToOne(targetEntity = Orders.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_idx")
+    @JoinColumn(name = "order_id")
     private Orders orders;
-    private Integer price;
+    private Long amount;
     @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
     @Enumerated(EnumType.STRING)
@@ -40,11 +40,11 @@ public class Payment {
     }
 
     @Builder
-    public Payment(String paymentNumber, Users users, Orders orders, Integer price, PaymentMethod paymentMethod, PaymentState paymentState) {
+    public Payment(String paymentNumber, Users users, Orders orders, Long amount, PaymentMethod paymentMethod, PaymentState paymentState) {
         this.paymentNumber = paymentNumber;
         this.users = users;
         this.orders = orders;
-        this.price = price;
+        this.amount = amount;
         this.paymentMethod = paymentMethod;
         this.paymentState = paymentState;
     }

@@ -17,18 +17,18 @@ public class OrderProduct {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderProductIdx;
+    private Long orderProductId;
     @ManyToOne(targetEntity = Orders.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_idx")
+    @JoinColumn(name = "order_id")
     private Orders orders;
     @ManyToOne(targetEntity = Product.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_idx")
+    @JoinColumn(name = "product_id")
     private Product product;
-    private Integer cnt;
-    private Integer price;
+    private Long cnt;
+    private Long price;
 
     @Builder
-    public OrderProduct(Orders orders, Product product, Integer cnt, Integer price) {
+    public OrderProduct(Orders orders, Product product, Long cnt, Long price) {
         this.orders = orders;
         this.product = product;
         this.cnt = cnt;

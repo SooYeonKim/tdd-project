@@ -17,12 +17,12 @@ public class Heart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long heartIdx;
+    private Long heartId;
     @ManyToOne(targetEntity = Users.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_idx")
+    @JoinColumn(name = "user_id")
     private Users users;
     @ManyToOne(targetEntity = Product.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_idx")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @Builder

@@ -21,10 +21,10 @@ public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderIdx;
+    private Long orderId;
     private String orderNumber;
     @ManyToOne(targetEntity = Users.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_idx")
+    @JoinColumn(name = "user_id")
     private Users users;
     @Enumerated(EnumType.STRING)
     private OrderState orderState;
