@@ -1,20 +1,20 @@
 package com.example.tdd.api.user;
 
-import com.example.tdd.api.balance.Balance;
-import com.example.tdd.api.balance.dto.AmountChargeRequest;
-import com.example.tdd.global.exception.NotUserFoundException;
+import com.example.tdd.global.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import static com.example.tdd.global.exception.ErrorCode.NOT_USER_FOUND;
+
 @RequiredArgsConstructor
 @Transactional
 @Component
-public class UserComponent {
+public class UserReader {
 
     private final UserRepository userRepository;
 
     public Users getUser(Long userId) {
-        return userRepository.findByUserId(userId).orElseThrow(() -> new NotUserFoundException("존재하지 않는 회원입니다."));
+        return userRepository.findByUserId(userId).orElseThrow(() -> new CustomException(NOT_USER_FOUND));
     }
 }

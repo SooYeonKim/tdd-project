@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ExceptionController {
 
-    @ExceptionHandler(NotUserFoundException.class)
-    public ResponseEntity<BaseResponse> NotExistUserExceptionHandler(NotUserFoundException e){
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new BaseResponse("E1000", e.getMessage()));
+    @ExceptionHandler(CustomException.class)
+    public ResponseEntity<BaseResponse> CustomExceptionHandler(CustomException e){
+        return ResponseEntity.status(e.getHttpStatus()).body(new BaseResponse(e.getCode(), e.getMessage()));
     }
 }
