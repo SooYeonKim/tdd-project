@@ -3,7 +3,8 @@ package com.example.tdd.global.exception;
 import org.springframework.http.HttpStatus;
 
 public enum ErrorCode {
-        NOT_USER_FOUND(HttpStatus.BAD_REQUEST, "E1000", "존재하지 않는 사용자입니다.");
+        NOT_USER_FOUND(HttpStatus.BAD_REQUEST, "E1000", "존재하지 않는 사용자입니다."),
+        NOT_PRODUCT_FOUND(HttpStatus.BAD_REQUEST, "E1001", "존재하지 않는 상품입니다.");
 
         private HttpStatus httpStatus;
 
