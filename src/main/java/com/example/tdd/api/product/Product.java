@@ -2,6 +2,8 @@ package com.example.tdd.api.product;
 
 import com.example.tdd.api.Heart.Heart;
 import com.example.tdd.api.orderProduct.OrderProduct;
+import com.example.tdd.global.exception.CustomException;
+import com.example.tdd.global.exception.ErrorCode;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -14,6 +16,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.tdd.global.exception.ErrorCode.OUT_OF_PRODUCT_STOCK;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
@@ -56,5 +60,10 @@ public class Product {
 
     public void deleteProduct() {
         this.deletedYn = 'Y';
+    }
+
+    public void decreaseStock(Long cnt) {
+        if (this.stock < cnt) new CustomException(OUT_OF_PRODUCT_STOCK);
+        this.stock -= cnt;
     }
 }

@@ -22,6 +22,7 @@ public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
+    @Column(unique = true)
     private String orderNumber;
     @ManyToOne(targetEntity = Users.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -39,7 +40,7 @@ public class Orders {
     List<OrderProduct> orderProductList = new ArrayList<>();
 
     public enum OrderState {
-        PROGRESS, COMPLETE, SHIPPING, DELIVERY_COMPLETE, CANCEL
+        PROGRESS, PAYMENT_COMPLETE, SHIPPING, DELIVERY_COMPLETE, CANCEL
     }
 
     @Builder
