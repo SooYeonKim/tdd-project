@@ -36,7 +36,7 @@ public class Payment {
     }
 
     public enum PaymentState {
-        PROGRESS, COMPLETE, CANCEL
+        PROGRESS, COMPLETE, CANCEL, FAIL
     }
 
     @Builder

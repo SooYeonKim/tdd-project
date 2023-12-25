@@ -75,4 +75,6 @@ public class Users {
     public void chargeBalance(Long amount) {
         this.balance += amount;
     }
+
+    public void useBalance(Long amount) { this.balance -= amount; }
 }

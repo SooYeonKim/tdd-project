@@ -33,12 +33,15 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderResponse orderProduct(Long userId, OrderRequest orderRequest) {
         Users users = userReader.getUser(userId);
+        Long amount = 0L;
+
+        // 상품 단위로 락을 잡은 후 재고 차감하는 로직 필요
 
         // 상품 재고 확인
         for (OrderProductRequest orderProductRequest : orderRequest.getOrderProductList()) {
             Product product = productReader.getProduct(orderProductRequest.getProductId());
             if (product.getStock() < orderProductRequest.getCount()) {
-                new CustomException(OUT_OF_PRODUCT_STOCK);
+                throw new CustomException(OUT_OF_PRODUCT_STOCK);
             }
         }
 
@@ -46,6 +49,7 @@ public class OrderServiceImpl implements OrderService {
         for (OrderProductRequest orderProductRequest : orderRequest.getOrderProductList()) {
             Product product = productReader.getProduct(orderProductRequest.getProductId());
             product.decreaseStock(orderProductRequest.getCount());
+            amount += (product.getPrice()) * orderProductRequest.getCount();
         }
 
         // 주문 생성
@@ -55,6 +59,7 @@ public class OrderServiceImpl implements OrderService {
                         .orderNumber(uuid)
                         .users(users)
                         .orderState(Orders.OrderState.PROGRESS)
+                        .amount(amount)
                 .build());
 
         for (OrderProductRequest orderProductRequest : orderRequest.getOrderProductList()) {

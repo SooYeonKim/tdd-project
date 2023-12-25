@@ -29,6 +29,7 @@ public class Orders {
     private Users users;
     @Enumerated(EnumType.STRING)
     private OrderState orderState;
+    private Long amount;
 
     @OneToMany(
             mappedBy = "orders"
@@ -40,14 +41,15 @@ public class Orders {
     List<OrderProduct> orderProductList = new ArrayList<>();
 
     public enum OrderState {
-        PROGRESS, PAYMENT_COMPLETE, SHIPPING, DELIVERY_COMPLETE, CANCEL
+        PROGRESS, PAYMENT_COMPLETE, SHIPPING, DELIVERY_COMPLETE, CANCEL, FAIL
     }
 
     @Builder
-    public Orders(String orderNumber, Users users, OrderState orderState) {
+    public Orders(String orderNumber, Users users, OrderState orderState, Long amount) {
         this.orderNumber = orderNumber;
         this.users = users;
         this.orderState = orderState;
+        this.amount = amount;
     }
 
     public void updateState(OrderState orderState) {

@@ -62,8 +62,12 @@ public class Product {
         this.deletedYn = 'Y';
     }
 
+    public void increaseStock(Long cnt) {
+        this.stock += cnt;
+    }
+
     public void decreaseStock(Long cnt) {
-        if (this.stock < cnt) new CustomException(OUT_OF_PRODUCT_STOCK);
+        if (this.stock < cnt) throw new CustomException(OUT_OF_PRODUCT_STOCK);
         this.stock -= cnt;
     }
 }
