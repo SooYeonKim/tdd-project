@@ -1,31 +1,35 @@
-package com.example.tdd.order;
+package com.example.tdd.api.order;
 
-import com.example.tdd.orderProduct.OrderProduct;
-import com.example.tdd.payment.Payment;
-import com.example.tdd.user.Users;
+import com.example.tdd.api.orderProduct.OrderProduct;
+import com.example.tdd.api.payment.Payment;
+import com.example.tdd.api.user.Users;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderIdx;
+    private Long orderId;
+    @Column(unique = true)
     private String orderNumber;
     @ManyToOne(targetEntity = Users.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_idx")
+    @JoinColumn(name = "user_id")
     private Users users;
     @Enumerated(EnumType.STRING)
     private OrderState orderState;
+    private Long amount;
 
     @OneToMany(
             mappedBy = "orders"
@@ -37,14 +41,15 @@ public class Orders {
     List<OrderProduct> orderProductList = new ArrayList<>();
 
     public enum OrderState {
-        PROGRESS, COMPLETE, SHIPPING, DELIVERY_COMPLETE, CANCEL
+        PROGRESS, PAYMENT_COMPLETE, SHIPPING, DELIVERY_COMPLETE, CANCEL, FAIL
     }
 
     @Builder
-    public Orders(String orderNumber, Users users, OrderState orderState) {
+    public Orders(String orderNumber, Users users, OrderState orderState, Long amount) {
         this.orderNumber = orderNumber;
         this.users = users;
         this.orderState = orderState;
+        this.amount = amount;
     }
 
     public void updateState(OrderState orderState) {

@@ -1,26 +1,28 @@
-package com.example.tdd.Heart;
+package com.example.tdd.api.Heart;
 
-import com.example.tdd.product.Product;
-import com.example.tdd.user.Users;
+import com.example.tdd.api.product.Product;
+import com.example.tdd.api.user.Users;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class Heart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long heartIdx;
+    private Long heartId;
     @ManyToOne(targetEntity = Users.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_idx")
+    @JoinColumn(name = "user_id")
     private Users users;
     @ManyToOne(targetEntity = Product.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_idx")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @Builder
