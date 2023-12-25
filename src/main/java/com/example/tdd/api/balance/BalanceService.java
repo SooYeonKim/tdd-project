@@ -1,10 +1,10 @@
 package com.example.tdd.api.balance;
 
 import com.example.tdd.api.balance.dto.AmountChargeRequest;
-import com.example.tdd.api.balance.dto.UserBalanceResponseDto;
+import com.example.tdd.api.balance.dto.UserBalanceResponse;
 
 public interface BalanceService {
 
     void charge(Long userId, AmountChargeRequest amountChargeRequest);
-    UserBalanceResponseDto getUserBalance(Long userId);
+    UserBalanceResponse getUserBalance(Long userId);
 }

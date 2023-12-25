@@ -1,6 +1,6 @@
 package com.example.tdd.api.balance;
 
-import com.example.tdd.api.balance.dto.UserBalanceResponseDto;
+import com.example.tdd.api.balance.dto.UserBalanceResponse;
 import com.example.tdd.api.user.UserReader;
 import com.example.tdd.api.balance.dto.AmountChargeRequest;
 import com.example.tdd.api.user.Users;
@@ -30,8 +30,8 @@ public class BalanceServiceImpl implements BalanceService {
     }
 
     @Override
-    public UserBalanceResponseDto getUserBalance(Long userId) {
+    public UserBalanceResponse getUserBalance(Long userId) {
         Users users = userReader.getUser(userId);
-        return UserBalanceResponseDto.of(users);
+        return UserBalanceResponse.of(users);
     }
 }

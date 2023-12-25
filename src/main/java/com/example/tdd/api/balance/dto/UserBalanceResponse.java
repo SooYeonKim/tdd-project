@@ -7,17 +7,17 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class UserBalanceResponseDto {
+public class UserBalanceResponse {
 
     private Long balance;
 
     @Builder
-    public UserBalanceResponseDto(Long balance) {
+    public UserBalanceResponse(Long balance) {
         this.balance = balance;
     }
 
-    public static UserBalanceResponseDto of(Users users) {
-        return UserBalanceResponseDto.builder()
+    public static UserBalanceResponse of(Users users) {
+        return UserBalanceResponse.builder()
                 .balance(users.getBalance())
                 .build();
     }
