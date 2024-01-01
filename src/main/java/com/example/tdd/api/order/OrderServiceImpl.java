@@ -8,17 +8,15 @@ import com.example.tdd.api.product.Product;
 import com.example.tdd.api.product.ProductReader;
 import com.example.tdd.api.user.UserReader;
 import com.example.tdd.api.user.Users;
-import com.example.tdd.global.exception.CustomException;
-import com.example.tdd.global.exception.ErrorCode;
-import com.example.tdd.global.util.CommonReader;
-import jakarta.persistence.*;
+import com.example.tdd.common.exception.CustomException;
+import com.example.tdd.common.util.CommonReader;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
-import static com.example.tdd.global.exception.ErrorCode.OUT_OF_PRODUCT_STOCK;
+import static com.example.tdd.common.exception.ErrorCode.OUT_OF_PRODUCT_STOCK;
 
 @RequiredArgsConstructor
 @Transactional

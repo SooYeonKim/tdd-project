@@ -1,8 +1,8 @@
 package com.example.tdd.api.balance;
 
 import com.example.tdd.api.balance.dto.AmountChargeRequest;
-import com.example.tdd.global.response.BaseDataResponse;
-import com.example.tdd.global.response.BaseResponse;
+import com.example.tdd.common.response.BaseDataResponse;
+import com.example.tdd.common.response.BaseResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

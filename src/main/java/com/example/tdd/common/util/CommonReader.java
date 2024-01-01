@@ -1,4 +1,4 @@
-package com.example.tdd.global.util;
+package com.example.tdd.common.util;
 
 
 import lombok.RequiredArgsConstructor;

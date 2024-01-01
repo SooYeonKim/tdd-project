@@ -1,8 +1,7 @@
 package com.example.tdd.api.order;
 
 import com.example.tdd.api.order.dto.OrderRequest;
-import com.example.tdd.global.response.BaseDataResponse;
-import com.example.tdd.global.response.BaseResponse;
+import com.example.tdd.common.response.BaseDataResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
