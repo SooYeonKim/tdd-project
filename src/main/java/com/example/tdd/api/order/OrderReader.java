@@ -1,12 +1,11 @@
 package com.example.tdd.api.order;
 
-import com.example.tdd.global.exception.CustomException;
-import com.example.tdd.global.exception.ErrorCode;
+import com.example.tdd.common.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.example.tdd.global.exception.ErrorCode.NOT_ORDER_FOUND;
+import static com.example.tdd.common.exception.ErrorCode.NOT_ORDER_FOUND;
 
 @RequiredArgsConstructor
 @Transactional

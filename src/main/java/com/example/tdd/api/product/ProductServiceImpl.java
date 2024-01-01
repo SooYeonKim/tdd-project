@@ -2,8 +2,7 @@ package com.example.tdd.api.product;
 
 import com.example.tdd.api.product.dto.ProductDetailResponse;
 import com.example.tdd.api.product.dto.ProductListResponse;
-import com.example.tdd.global.exception.CustomException;
-import com.example.tdd.global.exception.ErrorCode;
+import com.example.tdd.common.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.example.tdd.global.exception.ErrorCode.NOT_PRODUCT_FOUND;
+import static com.example.tdd.common.exception.ErrorCode.NOT_PRODUCT_FOUND;
 
 @RequiredArgsConstructor
 @Transactional

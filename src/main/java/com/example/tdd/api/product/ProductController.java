@@ -1,6 +1,6 @@
 package com.example.tdd.api.product;
 
-import com.example.tdd.global.response.BaseDataResponse;
+import com.example.tdd.common.response.BaseDataResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

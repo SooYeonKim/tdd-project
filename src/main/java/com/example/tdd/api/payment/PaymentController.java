@@ -1,11 +1,9 @@
 package com.example.tdd.api.payment;
 
-import com.example.tdd.api.order.dto.OrderRequest;
 import com.example.tdd.api.payment.dto.PaymentRequest;
-import com.example.tdd.global.exception.CustomException;
-import com.example.tdd.global.exception.ErrorCode;
-import com.example.tdd.global.response.BaseDataResponse;
-import com.example.tdd.global.response.BaseResponse;
+import com.example.tdd.common.exception.CustomException;
+import com.example.tdd.common.exception.ErrorCode;
+import com.example.tdd.common.response.BaseResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

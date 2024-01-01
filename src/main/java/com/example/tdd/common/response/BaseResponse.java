@@ -1,4 +1,4 @@
-package com.example.tdd.global.response;
+package com.example.tdd.common.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -2,8 +2,7 @@ package com.example.tdd.api.product;
 
 import com.example.tdd.api.Heart.Heart;
 import com.example.tdd.api.orderProduct.OrderProduct;
-import com.example.tdd.global.exception.CustomException;
-import com.example.tdd.global.exception.ErrorCode;
+import com.example.tdd.common.exception.CustomException;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -17,7 +16,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.tdd.global.exception.ErrorCode.OUT_OF_PRODUCT_STOCK;
+import static com.example.tdd.common.exception.ErrorCode.OUT_OF_PRODUCT_STOCK;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)

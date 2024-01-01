@@ -1,11 +1,11 @@
 package com.example.tdd.api.product;
 
-import com.example.tdd.global.exception.CustomException;
+import com.example.tdd.common.exception.CustomException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.example.tdd.global.exception.ErrorCode.NOT_PRODUCT_FOUND;
+import static com.example.tdd.common.exception.ErrorCode.NOT_PRODUCT_FOUND;
 
 @RequiredArgsConstructor
 @Transactional
