@@ -1,4 +1,4 @@
-package com.example.tdd.api.Heart;
+package com.example.tdd.api.heart;
 
 import com.example.tdd.api.product.Product;
 import com.example.tdd.api.user.Users;

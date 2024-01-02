@@ -1,6 +1,6 @@
 package com.example.tdd.api.product;
 
-import com.example.tdd.api.Heart.Heart;
+import com.example.tdd.api.heart.Heart;
 import com.example.tdd.api.orderProduct.OrderProduct;
 import com.example.tdd.common.exception.CustomException;
 import jakarta.persistence.*;

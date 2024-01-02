@@ -1,6 +1,6 @@
 package com.example.tdd.api.user;
 
-import com.example.tdd.api.Heart.Heart;
+import com.example.tdd.api.heart.Heart;
 import com.example.tdd.api.order.Orders;
 import com.example.tdd.api.payment.Payment;
 import com.example.tdd.api.balance.Balance;
